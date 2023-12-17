@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import ImgCard from "../ImgCard/ImgCard.component";
 import "./AlbumReview.style.scss";
 
