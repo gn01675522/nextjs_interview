@@ -1,0 +1,44 @@
+.tabbar {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 48px;
+  padding: 15px 30px;
+  bottom: 0;
+  left: 0;
+  justify-content: space-between;
+  &__search {
+    order: 2;
+  }
+  &__submit {
+    order: 1;
+  }
+  &__bell {
+    order: 3;
+  }
+  &__blocker {
+    display: none;
+    width: 100%;
+    height: 48px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .tabbar {
+    bottom: unset;
+    top: 0;
+    gap: 20px;
+    &__search,
+    &__submit,
+    &__bell {
+      order: unset;
+    }
+    &__submit {
+      margin-left: auto;
+    }
+    &__blocker {
+      display: block;
+      outline: 1px solid white;
+    }
+  }
+}

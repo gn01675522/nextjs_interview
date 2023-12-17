@@ -1,0 +1,39 @@
+.album-review {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  gap: 15px;
+  &__title {
+    display: flex;
+    gap: 6px;
+    h3 {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+  &__list {
+    outline: 1px solid white;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    li {
+      list-style: none;
+    }
+    li:not(:first-child) {
+      display: none;
+    }
+  }
+}
+// min 233px max
+
+@media screen and (min-width: 1920px) {
+  .album-review {
+    &__list {
+      li:not(:first-child) {
+        display: unset;
+      }
+    }
+  }
+}

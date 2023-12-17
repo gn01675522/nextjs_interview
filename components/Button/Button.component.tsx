@@ -1,4 +1,4 @@
-import "./Button.scss";
+import "./Button.style.scss";
 
 //* 整合所有 button 的類型
 //* 若後續有需要修改樣式的需求，就直接來這邊查找並修改
