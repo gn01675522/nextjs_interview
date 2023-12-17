@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(17, 17, 17, 1);
+}
+
+//* 由於設計稿內字體全部都是同字體、400 重、白色
+//* 故直接在這邊設立全局樣式以避免重複
+p,
+span,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  color: white;
+}

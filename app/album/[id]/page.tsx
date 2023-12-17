@@ -1,6 +1,6 @@
 import "./page.scss";
 
-const AlbumDetailPage = () => {
+const AlbumPage = () => {
   return (
     <div>
       <div>Album detail page</div>
@@ -8,4 +8,4 @@ const AlbumDetailPage = () => {
   );
 };
 
-export default AlbumDetailPage;
+export default AlbumPage;
