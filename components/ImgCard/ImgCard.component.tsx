@@ -2,7 +2,7 @@ import "./ImgCard.style.scss";
 
 const ImgCard = () => {
   return (
-    <div>
+    <div className="img-card">
       <div>ImgCard</div>
     </div>
   );
