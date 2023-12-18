@@ -8,7 +8,6 @@ const Tabbar = () => {
         <div className="tabbar__submit">submit</div>
         <div className="tabbar__bell">bell</div>
       </div>
-      <div className="tabbar__blocker"></div>
     </>
   );
 };

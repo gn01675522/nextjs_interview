@@ -10,6 +10,19 @@ body {
   background-color: rgb(17, 17, 17, 1);
 }
 
+// 針對非 login 頁面的內容做設定
+// 主要是因為 Tabbar 會造成內容覆蓋
+// 所以這邊添加了 margin 以便預留 Tabbar 的空間
+.main-content {
+  margin-bottom: 48px;
+}
+@media screen and (min-width: 768px) {
+  .main-content {
+    margin-bottom: unset;
+    margin-top: 70px;
+  }
+}
+
 //* 由於設計稿內字體全部都是同字體、400 重、白色
 //* 故直接在這邊設立全局樣式以避免重複
 p,

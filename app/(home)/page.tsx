@@ -4,7 +4,7 @@ import "./page.scss";
 
 const HomePage = () => {
   return (
-    <main className="home">
+    <div className="home">
       <div className="home__owner">
         <h1 className="home__owner-name">Leanne Graham</h1>
         <div className="home__owner-email">
@@ -18,7 +18,7 @@ const HomePage = () => {
         <AlbumReview />
         <AlbumReview />
       </div>
-    </main>
+    </div>
   );
 };
 
