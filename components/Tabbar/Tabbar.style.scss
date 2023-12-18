@@ -24,11 +24,12 @@
   }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 768px) {
   .tabbar {
     bottom: unset;
     top: 0;
     gap: 20px;
+    padding: 20px;
     &__search,
     &__submit,
     &__bell {
@@ -39,7 +40,6 @@
     }
     &__blocker {
       display: block;
-      outline: 1px solid white;
     }
   }
 }

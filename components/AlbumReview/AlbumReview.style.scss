@@ -12,7 +12,6 @@
     }
   }
   &__list {
-    outline: 1px solid white;
     display: flex;
     width: 100%;
     height: 100%;
@@ -25,7 +24,32 @@
     }
   }
 }
-// min 233px max
+
+@media screen and (min-width: 630px) {
+  .album-review {
+    &__list {
+      li:not(:first-child) {
+        display: unset;
+      }
+      li:nth-child(n + 3) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1425px) {
+  .album-review {
+    &__list {
+      li:not(:first-child) {
+        display: unset;
+      }
+      li:nth-child(n + 4) {
+        display: none;
+      }
+    }
+  }
+}
 
 @media screen and (min-width: 1920px) {
   .album-review {
