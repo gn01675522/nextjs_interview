@@ -1,3 +1,5 @@
+import { FC, ButtonHTMLAttributes } from "react";
+
 import "./Button.style.scss";
 
 //* 整合所有 button 的類型
@@ -22,15 +24,23 @@ const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
     [BUTTON_TYPE_CLASSES.search]: "button__search",
   }[buttonType]);
 
-type ChildrenProps = {
+type ChildrenPropsType = {
   children: string | JSX.Element;
   buttonType?: BUTTON_TYPE_CLASSES;
-};
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = ({ children, buttonType }: ChildrenProps) => {
+const Button: FC<ChildrenPropsType> = ({
+  children,
+  buttonType,
+  ...otherProps
+}) => {
   const CustomButton = getButton(buttonType);
 
-  return <button className={CustomButton}>{children}</button>;
+  return (
+    <button className={CustomButton} {...otherProps}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;
