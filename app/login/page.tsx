@@ -26,15 +26,21 @@ const LoginPage = () => {
       // 由於 input 裡面的是字串，但是 jsonplaceholder api 提供的 id 是 number，
       // 所以這邊的 userId 做個類型轉換
       const res = await fetch(apiUserLogin(Number(inputValue)));
-      const data = await res.json();
-      setUserId(data.id);
-      // router.push("/");
+
+      // jsonplaceholder api 會回傳一個 ok 的值，
+      // 如果請求失敗或錯誤就會 false 反之則為 true
+      if (res.ok === false) {
+        // todo 之後再看看要不要做錯誤的 message momdal
+        console.log(res.ok);
+        console.log("Unvalid User ID");
+      } else {
+        const data = await res.json();
+        setUserId(data.id);
+      }
     } catch (e) {
-      // todo 之後再看看要不要做錯誤的 message momdal
       console.log(e);
     }
   };
-  console.log("login success", userId);
 
   useEffect(() => {
     if (userId !== 0) {
