@@ -7,14 +7,14 @@ import Button, {
   BUTTON_TYPE_CLASSES,
 } from "@/components/Button/Button.component";
 
-import { apiUserLogin } from "@/lib/api";
+import { apiUserLogin, apiUserAlbumList } from "@/lib/api";
 import { useUserContext } from "@/store/user.context";
 
 import "./page.scss";
 
 const LoginPage = () => {
   const [inputValue, setInputValue] = useState("");
-  const { userId, setUserId } = useUserContext();
+  const { user, setUser, setHasAlbum } = useUserContext();
   const router = useRouter();
 
   const onChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,11 +31,14 @@ const LoginPage = () => {
       // 如果請求失敗或錯誤就會 false 反之則為 true
       if (res.ok === false) {
         // todo 之後再看看要不要做錯誤的 message momdal
-        console.log(res.ok);
         console.log("Unvalid User ID");
       } else {
         const data = await res.json();
-        setUserId(data.id);
+        const albumRes = await fetch(apiUserAlbumList(data.id));
+        const albumData = await albumRes.json();
+
+        setUser({ id: data.id, name: data.name, email: data.email });
+        setHasAlbum([...albumData]);
       }
     } catch (e) {
       console.log(e);
@@ -43,10 +46,10 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-    if (userId !== 0) {
+    if (user.id !== 0) {
       router.push("/");
     }
-  }, [userId, router]);
+  }, [user.id, router]);
 
   return (
     <main className="login">
