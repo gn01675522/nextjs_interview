@@ -3,7 +3,7 @@
 import { useState, Dispatch, SetStateAction, useContext } from "react";
 import { createContext } from "react";
 
-type ChildrenProps = {
+type ChildrenPropsType = {
   children: React.ReactNode;
 };
 
@@ -26,10 +26,6 @@ type ContextType = {
   setHasAlbum: Dispatch<SetStateAction<HasAlbumType[]>>;
 };
 
-// 整體流程大約是當 user 登入後
-// 其 id 會被紀錄在 userId 這邊
-// 後續會根據 jsonplaceholder 提供的 api 打看看相對應的 albumId 有哪些
-// 接著一併存在 hasAlbum
 export const UserContext = createContext<ContextType>({
   user: {
     id: 0,
@@ -41,7 +37,7 @@ export const UserContext = createContext<ContextType>({
   setHasAlbum: () => {},
 });
 
-export const UserContextProvider = ({ children }: ChildrenProps) => {
+export const UserContextProvider = ({ children }: ChildrenPropsType) => {
   const [user, setUser] = useState<UserType>({
     id: 0,
     name: "",

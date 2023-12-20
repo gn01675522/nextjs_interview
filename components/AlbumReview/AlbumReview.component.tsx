@@ -5,6 +5,7 @@ import ImgCard from "../ImgCard/ImgCard.component";
 import { apiUserAlbumDetail } from "@/lib/api";
 
 import "./AlbumReview.style.scss";
+import Link from "next/link";
 
 type AlbumType = {
   id: number;
@@ -26,10 +27,12 @@ export type AlbumPhotosType = {
 
 const AlbumReview = ({ album }: PropsType) => {
   const [albumPhotos, setAlbumPhotos] = useState<AlbumPhotosType[]>([]);
+  const { id, title } = album;
+
   const showTopFourPhotos = albumPhotos.slice(0, 4);
 
   useEffect(() => {
-    if (album.id) {
+    if (album) {
       fetch(apiUserAlbumDetail(album.id))
         .then((res) => res.json())
         .then((data) => setAlbumPhotos(data))
@@ -39,10 +42,10 @@ const AlbumReview = ({ album }: PropsType) => {
 
   return (
     <div className="album-review">
-      <div className="album-review__title">
+      <Link className="album-review__title" href={`/album/${id}`}>
         <span>icon</span>
-        <h3>{album.title}</h3>
-      </div>
+        <h3>{title}</h3>
+      </Link>
       <ul className="album-review__list">
         {showTopFourPhotos.map((photo) => (
           <li key={photo.id}>
