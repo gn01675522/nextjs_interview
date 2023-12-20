@@ -4,9 +4,12 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import AlbumReview from "@/components/AlbumReview/AlbumReview.component";
 
+import ArrowLogo from "@/assets/arrow.svg";
+
 import { useUserContext } from "@/store/user.context";
 
 import "./page.scss";
+import Image from "next/image";
 
 const HomePage = () => {
   const { user, hasAlbum } = useUserContext();
@@ -27,8 +30,14 @@ const HomePage = () => {
       <div className="home__owner">
         <h1 className="home__owner-name">{name}</h1>
         <div className="home__owner-email">
-          <span>icon</span>
-          <div>{email}</div>
+          <div className="home__owner-email-wrapper">
+            <Image
+              className="home__owner-email-wrapper-icon"
+              src={ArrowLogo}
+              alt="arrow logo"
+            />
+          </div>
+          <h2>{email}</h2>
         </div>
       </div>
       <div className="home__list">

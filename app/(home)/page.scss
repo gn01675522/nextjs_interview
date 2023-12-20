@@ -15,9 +15,19 @@
     &-email {
       display: flex;
       gap: 10px;
-      div {
+      line-height: 16px;
+      &-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-icon {
+          width: 16px;
+          height: 16px;
+          text-decoration: underline;
+        }
+      }
+      h2 {
         font-size: 14px;
-        text-decoration: underline;
       }
     }
   }
@@ -46,7 +56,7 @@
         font-size: 36px;
       }
       &-email {
-        div {
+        h2 {
           font-size: 18px;
         }
       }
