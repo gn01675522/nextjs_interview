@@ -1,39 +1,92 @@
 .tabbar {
+  outline: 1px solid white;
   position: fixed;
   display: flex;
   width: 100%;
   height: 48px;
-  padding: 15px 30px;
+  padding: 0 30px;
   bottom: 0;
   left: 0;
   background-color: rgb(17, 17, 17, 1);
   justify-content: space-between;
   z-index: 10;
+  &__search,
+  &__submit,
+  &__notifications {
+    display: flex;
+    // 設計稿上只有針對 icon 設定寬高
+    // 但這邊加入寬 48px，高與父元素相同，也是 48px
+    // 目的是為了讓 user 點擊時更方便
+    width: 48px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &-icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
   &__search {
     order: 2;
   }
   &__submit {
     order: 1;
+    &-icon {
+      &-cross {
+        display: none;
+      }
+    }
   }
-  &__bell {
+  &__notifications {
     order: 3;
   }
 }
 
 @media screen and (min-width: 768px) {
   .tabbar {
+    height: 90px;
     bottom: unset;
     top: 0;
     gap: 20px;
     padding: 20px;
     &__search,
     &__submit,
-    &__bell {
+    &__notifications {
       order: unset;
+      &-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &__search,
+    &__notifications {
+      width: 50px;
+      height: 50px;
+      padding: 15px;
+      border: 1px solid white;
     }
     &__submit {
+      width: 241px;
+      height: 50px;
+      border: 1px solid white;
+      font-size: 18px;
       margin-left: auto;
+      &::before {
+        content: "Submit a photo";
+        margin-right: 10px;
+      }
+      &-icon {
+        &-rectangle {
+          display: none;
+        }
+        &-cross {
+          display: unset;
+        }
+      }
     }
+
     &-top {
       display: none;
     }
