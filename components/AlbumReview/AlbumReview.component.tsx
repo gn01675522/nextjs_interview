@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 import ImgCard from "../ImgCard/ImgCard.component";
+import FlagLogo from "@/assets/flag.svg";
 
 import { apiUserAlbumDetail } from "@/lib/api";
 
 import "./AlbumReview.style.scss";
-import Link from "next/link";
+import Image from "next/image";
 
 type AlbumType = {
   id: number;
@@ -43,7 +45,13 @@ const AlbumReview = ({ album }: PropsType) => {
   return (
     <div className="album-review">
       <Link className="album-review__title" href={`/album/${id}`}>
-        <span>icon</span>
+        <div className="album-review__title-wrapper">
+          <Image
+            className="album-review__title-wrapper-icon"
+            src={FlagLogo}
+            alt="flag logo"
+          />
+        </div>
         <h3>{title}</h3>
       </Link>
       <ul className="album-review__list">
