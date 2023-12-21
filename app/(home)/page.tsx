@@ -7,15 +7,18 @@ import AlbumReview from "@/components/AlbumReview/AlbumReview.component";
 import ArrowLogo from "@/assets/arrow.svg";
 
 import { useUserContext } from "@/store/user.context";
+import { useAlbumContext } from "@/store/album.context";
 
 import "./page.scss";
 import Image from "next/image";
 
 const HomePage = () => {
-  const { user, hasAlbum } = useUserContext();
-  const router = useRouter();
-
+  const { user } = useUserContext();
   const { name, email } = user;
+
+  const { albumList } = useAlbumContext();
+
+  const router = useRouter();
 
   // context 預設 userId 為 0，jsonplaceholder 第一個 userId 為 1
   // 如果沒有登入，也就是當 userId 為 0 時就進來，那麼就將其導向到 login 頁面來做登入動作
@@ -41,7 +44,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="home__list">
-        {hasAlbum.map((album) => (
+        {albumList.map((album) => (
           <AlbumReview key={album.id} album={album} />
         ))}
       </div>

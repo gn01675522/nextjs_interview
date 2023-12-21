@@ -61,7 +61,7 @@
   }
 }
 
-@media screen and (min-width: 1425px) {
+@media screen and (min-width: 1024px) {
   .album-review {
     &__list {
       li:not(:first-child) {
@@ -77,7 +77,7 @@
 @media screen and (min-width: 1920px) {
   .album-review {
     &__list {
-      li:not(:first-child) {
+      li:nth-child(n + 4) {
         display: unset;
       }
     }

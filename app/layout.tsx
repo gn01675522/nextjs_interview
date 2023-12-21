@@ -2,6 +2,7 @@ import "@/globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { UserContextProvider } from "@/store/user.context";
+import { AlbumContextProvider } from "@/store/album.context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserContextProvider>
-        <body>{children}</body>
+        <AlbumContextProvider>
+          <body>{children}</body>
+        </AlbumContextProvider>
       </UserContextProvider>
     </html>
   );
