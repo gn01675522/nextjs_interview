@@ -11,6 +11,7 @@ import { useAlbumContext } from "@/store/album.context";
 
 import "./page.scss";
 import Image from "next/image";
+import Modal from "@/components/Modal/Modal.component";
 
 const HomePage = () => {
   const { user } = useUserContext();
@@ -25,30 +26,34 @@ const HomePage = () => {
   useEffect(() => {
     if (user.id === 0) {
       router.push("/login");
+      return;
     }
   }, [user.id, router]);
 
   return (
-    <div className="home">
-      <div className="home__owner">
-        <h1 className="home__owner-name">{name}</h1>
-        <div className="home__owner-email">
-          <div className="home__owner-email-wrapper">
-            <Image
-              className="home__owner-email-wrapper-icon"
-              src={ArrowLogo}
-              alt="arrow logo"
-            />
+    <>
+      <Modal />
+      <div className="home">
+        <div className="home__owner">
+          <h1 className="home__owner-name">{name}</h1>
+          <div className="home__owner-email">
+            <div className="home__owner-email-wrapper">
+              <Image
+                className="home__owner-email-wrapper-icon"
+                src={ArrowLogo}
+                alt="arrow logo"
+              />
+            </div>
+            <h2>{email}</h2>
           </div>
-          <h2>{email}</h2>
+        </div>
+        <div className="home__list">
+          {albumList.map((album) => (
+            <AlbumReview key={album.id} album={album} />
+          ))}
         </div>
       </div>
-      <div className="home__list">
-        {albumList.map((album) => (
-          <AlbumReview key={album.id} album={album} />
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -28,6 +28,10 @@
     li {
       list-style: none;
     }
+    // 若是要使用 JS 來達成mobile 尺寸只顯示一張的功能的話
+    // 那麼就需要透過 useEffect 來一直監控螢幕尺寸
+    // 而這會相當程度的影響效能
+    // 故於此使用 CSS 來達成
     li:not(:first-child) {
       display: none;
     }
@@ -51,6 +55,10 @@
       }
     }
     &__list {
+      // 以下針對不同的螢幕尺寸來做一些變化
+      // 630 以上為單行顯示兩張，1445 以上則為顯示 3 張
+      // 1920 以上為顯示四張。
+      // 每個 RWD 斷點都必須針對之前的 nth-child 設定做 unset
       li:not(:first-child) {
         display: unset;
       }
@@ -61,10 +69,10 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1445px) {
   .album-review {
     &__list {
-      li:not(:first-child) {
+      li:nth-child(n + 3) {
         display: unset;
       }
       li:nth-child(n + 4) {

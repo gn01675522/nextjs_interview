@@ -26,11 +26,18 @@ const AlbumDetailPage = () => {
   useEffect(() => {
     if (user.id === 0) {
       router.push("/login");
+      return;
     } else {
-      fetch(apiUserAlbumDetail(Number(params.id)))
-        .then((res) => res.json())
-        .then((data) => setAlbumPhotos(data))
-        .catch((e) => console.log(e));
+      const fetchAlbumPhotos = async () => {
+        try {
+          const res = await fetch(apiUserAlbumDetail(Number(params.id)));
+          const data = await res.json();
+          setAlbumPhotos(data);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      fetchAlbumPhotos();
     }
   }, [params, user.id, router]);
 

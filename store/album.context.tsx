@@ -41,10 +41,16 @@ export const AlbumContextProvider = ({ children }: ChildrenPropsType) => {
 
   useEffect(() => {
     if (user.id !== 0) {
-      fetch(apiUserAlbumList(user.id))
-        .then((res) => res.json())
-        .then((data) => setAlbumList([...data]))
-        .catch((e) => console.log(e));
+      const fetchAlbumData = async () => {
+        try {
+          const res = await fetch(apiUserAlbumList(user.id));
+          const data = await res.json();
+          setAlbumList([...data]);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      fetchAlbumData();
     }
   }, [user.id]);
 

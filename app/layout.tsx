@@ -20,7 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <UserContextProvider>
         <AlbumContextProvider>
-          <body>{children}</body>
+          <body>
+            <div className="overlays"></div>
+            {children}
+          </body>
         </AlbumContextProvider>
       </UserContextProvider>
     </html>
