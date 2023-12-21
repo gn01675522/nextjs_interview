@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { UserContextProvider } from "@/store/user.context";
 import { AlbumContextProvider } from "@/store/album.context";
+import { ModalContextProvider } from "@/store/modal.context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,12 @@ export default function RootLayout({
     <html lang="en">
       <UserContextProvider>
         <AlbumContextProvider>
-          <body>
-            <div className="overlays"></div>
-            {children}
-          </body>
+          <ModalContextProvider>
+            <body>
+              <div className="overlays"></div>
+              {children}
+            </body>
+          </ModalContextProvider>
         </AlbumContextProvider>
       </UserContextProvider>
     </html>

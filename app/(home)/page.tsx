@@ -8,6 +8,7 @@ import ArrowLogo from "@/assets/arrow.svg";
 
 import { useUserContext } from "@/store/user.context";
 import { useAlbumContext } from "@/store/album.context";
+import { useModalContext } from "@/store/modal.context";
 
 import "./page.scss";
 import Image from "next/image";
@@ -15,6 +16,7 @@ import Modal from "@/components/Modal/Modal.component";
 
 const HomePage = () => {
   const { user } = useUserContext();
+  const { isModalOpen } = useModalContext();
   const { name, email } = user;
 
   const { albumList } = useAlbumContext();
@@ -32,7 +34,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Modal />
+      {isModalOpen && <Modal />}
       <div className="home">
         <div className="home__owner">
           <h1 className="home__owner-name">{name}</h1>

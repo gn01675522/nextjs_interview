@@ -7,14 +7,22 @@ import InfoLogo from "@/assets/info.svg";
 import LikeLogo from "@/assets/like.svg";
 import SaveLogo from "@/assets/save.svg";
 
+import { useModalContext } from "@/store/modal.context";
+
 import "./Modal.style.scss";
 
 const Modal = () => {
+  const { setIsModalOpen, tempData } = useModalContext();
+
+  const onCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="modal-backdrop">
       <div className="modal">
         <div className="modal__header">
-          <div className="modal__header-close">
+          <div className="modal__header-close" onClick={onCloseModal}>
             <Image src={CloseLogo} alt="close button" />
           </div>
           <div className="modal__header-function">
@@ -33,7 +41,16 @@ const Modal = () => {
           </div>
         </div>
         <div className="modal__body">
-          <img className="modal__body-img" />
+          <div className="modal__body-wrapper">
+            <Image
+              className="modal__body-img"
+              src={tempData.url}
+              alt={`image: ${tempData.title}`}
+              // sizes="100%, (min-width: 1920px) 30%"
+              fill
+              priority
+            />
+          </div>
         </div>
         <div className="modal__footer">
           <div className="modal__footer-function">
@@ -48,7 +65,7 @@ const Modal = () => {
           </div>
           <div className="modal__footer-title">
             <span>Title</span>
-            <h1>accusamus beatae ad facilis cum similique qui sunt</h1>
+            <h1>{tempData.title}</h1>
           </div>
         </div>
       </div>

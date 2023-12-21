@@ -35,6 +35,7 @@ export const AlbumContext = createContext<ContextType>({
 
 export const AlbumContextProvider = ({ children }: ChildrenPropsType) => {
   const [albumList, setAlbumList] = useState<[] | AlbumListType[]>([]);
+
   const { user } = useUserContext();
 
   const value = { albumList, setAlbumList };

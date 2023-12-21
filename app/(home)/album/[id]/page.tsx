@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 
 import ImgCard from "@/components/ImgCard/ImgCard.component";
+import Modal from "@/components/Modal/Modal.component";
+
 import { AlbumPhotosType } from "@/components/AlbumReview/AlbumReview.component";
 
 import { apiUserAlbumDetail } from "@/lib/api";
 import { useUserContext } from "@/store/user.context";
 import { useAlbumContext } from "@/store/album.context";
+import { useModalContext } from "@/store/modal.context";
 
 import "./page.scss";
 
@@ -16,6 +19,7 @@ const AlbumDetailPage = () => {
   const [albumPhotos, setAlbumPhotos] = useState<AlbumPhotosType[]>([]);
   const { user } = useUserContext();
   const { albumList } = useAlbumContext();
+  const { isModalOpen } = useModalContext();
   const params = useParams();
   const router = useRouter();
 
@@ -42,14 +46,17 @@ const AlbumDetailPage = () => {
   }, [params, user.id, router]);
 
   return (
-    <main className="album-detail">
-      <h1 className="album-detail__title">{albumInfo?.title}</h1>
-      <div className="album-detail__list">
-        {albumPhotos.map((photos) => (
-          <ImgCard key={photos.id} photoData={photos} />
-        ))}
-      </div>
-    </main>
+    <>
+      {isModalOpen && <Modal />}
+      <main className="album-detail">
+        <h1 className="album-detail__title">{albumInfo?.title}</h1>
+        <div className="album-detail__list">
+          {albumPhotos.map((photos) => (
+            <ImgCard key={photos.id} photoData={photos} />
+          ))}
+        </div>
+      </main>
+    </>
   );
 };
 
