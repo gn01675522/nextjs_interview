@@ -14,7 +14,7 @@ import "./page.scss";
 
 const LoginPage = () => {
   const [inputValue, setInputValue] = useState("");
-  const { user, setUser, setHasAlbum } = useUserContext();
+  const { user, setUser } = useUserContext();
   const router = useRouter();
 
   const onChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +38,6 @@ const LoginPage = () => {
         const albumData = await albumRes.json();
 
         setUser({ id: data.id, name: data.name, email: data.email });
-        setHasAlbum([...albumData]);
       }
     } catch (e) {
       console.log(e);

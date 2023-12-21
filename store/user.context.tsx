@@ -13,17 +13,9 @@ type UserType = {
   email: string;
 };
 
-type HasAlbumType = {
-  id: number;
-  title: string;
-  userId: number;
-};
-
 type ContextType = {
   user: UserType;
   setUser: Dispatch<SetStateAction<UserType>>;
-  hasAlbum: HasAlbumType[];
-  setHasAlbum: Dispatch<SetStateAction<HasAlbumType[]>>;
 };
 
 export const UserContext = createContext<ContextType>({
@@ -33,8 +25,6 @@ export const UserContext = createContext<ContextType>({
     email: "",
   },
   setUser: () => {},
-  hasAlbum: [],
-  setHasAlbum: () => {},
 });
 
 export const UserContextProvider = ({ children }: ChildrenPropsType) => {
@@ -43,9 +33,8 @@ export const UserContextProvider = ({ children }: ChildrenPropsType) => {
     name: "",
     email: "",
   });
-  const [hasAlbum, setHasAlbum] = useState<[] | HasAlbumType[]>([]);
 
-  const value = { user, setUser, hasAlbum, setHasAlbum };
+  const value = { user, setUser };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

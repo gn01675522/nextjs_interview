@@ -8,15 +8,18 @@ import { AlbumPhotosType } from "@/components/AlbumReview/AlbumReview.component"
 
 import { apiUserAlbumDetail } from "@/lib/api";
 import { useUserContext } from "@/store/user.context";
+import { useAlbumContext } from "@/store/album.context";
 
 import "./page.scss";
 
 const AlbumDetailPage = () => {
   const [albumPhotos, setAlbumPhotos] = useState<AlbumPhotosType[]>([]);
+  const { user } = useUserContext();
+  const { albumList } = useAlbumContext();
   const params = useParams();
   const router = useRouter();
-  const { user, hasAlbum } = useUserContext();
-  const albumInfo = hasAlbum.filter(
+
+  const albumInfo = albumList.filter(
     (album) => album.id === Number(params.id)
   )[0];
 
