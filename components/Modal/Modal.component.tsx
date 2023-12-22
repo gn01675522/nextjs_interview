@@ -10,16 +10,26 @@ import SaveLogo from "@/assets/save.svg";
 import { useModalContext } from "@/store/modal.context";
 
 import "./Modal.style.scss";
+import { useEffect } from "react";
 
 const Modal = () => {
-  const { setIsModalOpen, tempData } = useModalContext();
+  const { isModalOpen, setIsModalOpen, tempData } = useModalContext();
 
   const onCloseModal = () => {
     setIsModalOpen(false);
   };
 
+  // 開啟 modal 時，為 body 加上 modal--on 的 class
+  // 這樣就可以防止背景出現滾動條
+  useEffect(() => {
+    document.body.classList.add("modal--on");
+    return () => {
+      document.body.classList.remove("modal--on");
+    };
+  }, []);
+
   return (
-    <div className="modal-backdrop">
+    <div className={`modal-backdrop ${isModalOpen ? "modal--on" : ""}`}>
       <div className="modal">
         <div className="modal__header">
           <div className="modal__header-close" onClick={onCloseModal}>
@@ -46,7 +56,7 @@ const Modal = () => {
               className="modal__body-img"
               src={tempData.url}
               alt={`image: ${tempData.title}`}
-              // sizes="100%, (min-width: 1920px) 30%"
+              sizes="100%, (min-width: 1920px) 30%"
               fill
               priority
             />

@@ -4,13 +4,20 @@
   height: 100vh;
   top: 0;
   left: 0;
+  padding: 20px;
   backdrop-filter: blur(75px);
-  z-index: 9;
+  z-index: 11;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .modal {
   width: 100%;
-  height: 100%;
+  height: min-content;
   padding: 15px;
   margin-top: 49px;
   background-color: #111;
@@ -21,6 +28,7 @@
     &-close {
       margin-bottom: 21px;
       align-self: flex-end;
+      cursor: pointer;
       img {
         width: 24px;
         height: 24px;
@@ -88,6 +96,9 @@
 }
 
 @media screen and (min-width: 1920px) {
+  .modal-backdrop {
+    z-index: 9;
+  }
   .modal {
     padding: 20px;
     margin-top: 133px;

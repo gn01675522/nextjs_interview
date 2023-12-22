@@ -39,3 +39,8 @@ button {
   font-weight: 400;
   color: white;
 }
+
+// 開啟 modal 時，讓背景不會出現滾動條
+.modal--on {
+  overflow-y: hidden;
+}
