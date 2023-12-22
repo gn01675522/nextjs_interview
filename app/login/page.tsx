@@ -3,10 +3,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import Button, {
-  BUTTON_TYPE_CLASSES,
-} from "@/components/Button/Button.component";
-
 import { apiUserLogin, apiUserAlbumList } from "@/lib/api";
 import { useUserContext } from "@/store/user.context";
 
@@ -30,7 +26,6 @@ const LoginPage = () => {
       // jsonplaceholder api 會回傳一個 ok 的值，
       // 如果請求失敗或錯誤就會 false 反之則為 true
       if (res.ok === false) {
-        // todo 之後再看看要不要做錯誤的 message momdal
         console.log("Unvalid User ID");
       } else {
         const data = await res.json();
@@ -53,23 +48,18 @@ const LoginPage = () => {
   return (
     <main className="login">
       <div className="login__body">
-        <div className="login__body-form">
+        <div className="login__body-group">
           <input
             placeholder="UserID"
-            className="login__body-form-input"
+            className="login__body-group-input"
             value={inputValue}
             onChange={onChangeInputValue}
           />
-          <Button
-            buttonType={BUTTON_TYPE_CLASSES.base}
-            onClick={onLoginHandler}
-          >
-            Log in
-          </Button>
-          <p className="login__body-form-para">Don’t have an account?</p>
-          <div className="login__body-form-func">
-            <Button buttonType={BUTTON_TYPE_CLASSES.base}>Register</Button>
-            <Button buttonType={BUTTON_TYPE_CLASSES.base}>Google</Button>
+          <button onClick={onLoginHandler}>Log in</button>
+          <p className="login__body-group-para">Don’t have an account?</p>
+          <div className="login__body-group-func">
+            <button>Register</button>
+            <button>Google</button>
           </div>
         </div>
       </div>

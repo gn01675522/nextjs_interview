@@ -5,7 +5,7 @@ import DownloadLogo from "@/assets/download.svg";
 import ArrowLogo from "@/assets/arrow.svg";
 import InfoLogo from "@/assets/info.svg";
 import LikeLogo from "@/assets/like.svg";
-import SaveLogo from "@/assets/save.svg";
+import FlagLogo from "@/assets/flag.svg";
 
 import { useModalContext } from "@/store/modal.context";
 
@@ -70,7 +70,7 @@ const Modal = () => {
             </div>
             <div className="modal__footer-function-item">
               <span>Save</span>
-              <Image src={SaveLogo} alt="save logo" />
+              <Image src={FlagLogo} alt="save logo" />
             </div>
           </div>
           <div className="modal__footer-title">
