@@ -4,9 +4,13 @@ import Modal from "./Modal.component";
 
 const portalElement = document.getElementById("overlays");
 
-const ModalPortal = () => {
+type ChildrenPropsType = {
+  children: JSX.Element;
+};
+
+const ModalPortal = ({ children }: ChildrenPropsType) => {
   if (!portalElement) return null;
-  return <>{createPortal(<Modal />, portalElement)}</>;
+  return <>{createPortal(<Modal>{children}</Modal>, portalElement)}</>;
 };
 
 export default ModalPortal;

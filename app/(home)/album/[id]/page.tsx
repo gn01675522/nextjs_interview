@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 
 import ImgCard from "@/components/ImgCard/ImgCard.component";
-import Modal from "@/components/Modal/Modal.component";
+import PopUp from "@/components/Modal/PopUp/PopUp.component";
 
 import { AlbumPhotosType } from "@/components/AlbumReview/AlbumReview.component";
 
@@ -47,7 +47,7 @@ const AlbumDetailPage = () => {
 
   return (
     <>
-      {isModalOpen && <Modal />}
+      {isModalOpen && <PopUp />}
       <main className="album-detail">
         <h1 className="album-detail__title">{albumInfo?.title}</h1>
         <div className="album-detail__list">

@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+
 import AlbumReview from "@/components/AlbumReview/AlbumReview.component";
+import PopUp from "@/components/Modal/PopUp/PopUp.component";
 
 import ArrowLogo from "@/assets/arrow.svg";
 
@@ -11,8 +14,6 @@ import { useAlbumContext } from "@/store/album.context";
 import { useModalContext } from "@/store/modal.context";
 
 import "./page.scss";
-import Image from "next/image";
-import Modal from "@/components/Modal/Modal.component";
 
 const HomePage = () => {
   const { user } = useUserContext();
@@ -34,7 +35,7 @@ const HomePage = () => {
 
   return (
     <>
-      {isModalOpen && <Modal />}
+      {isModalOpen && <PopUp />}
       <div className="home">
         <div className="home__owner">
           <h1 className="home__owner-name">{name}</h1>
