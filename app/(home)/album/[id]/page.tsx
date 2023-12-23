@@ -51,9 +51,11 @@ const AlbumDetailPage = () => {
       <main className="album-detail">
         <h1 className="album-detail__title">{albumInfo?.title}</h1>
         <div className="album-detail__list">
-          {albumPhotos.map((photos) => (
-            <ImgCard key={photos.id} photoData={photos} />
-          ))}
+          <div className="album-detail__list-wrapper">
+            {albumPhotos.map((photos) => (
+              <ImgCard key={photos.id} photoData={photos} />
+            ))}
+          </div>
         </div>
       </main>
     </>

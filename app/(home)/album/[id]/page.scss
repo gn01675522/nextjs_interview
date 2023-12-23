@@ -8,8 +8,26 @@
   &__list {
     display: flex;
     padding: 15px;
-    gap: 40px;
-    flex-wrap: wrap;
+    justify-content: center;
+    &-wrapper {
+      display: grid;
+      grid-template-columns: 290px;
+      grid-template-rows: 186px;
+      grid-auto-rows: 186px;
+      grid-auto-flow: row;
+      gap: 40px;
+    }
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .album-detail {
+    &__list {
+      &-wrapper {
+        grid-template-columns: repeat(2, 290px);
+        gap: 10px;
+      }
+    }
   }
 }
 
@@ -23,7 +41,11 @@
     }
     &__list {
       padding: 20px;
-      gap: 20px;
+      &-wrapper {
+        grid-template-columns: repeat(2, 350px);
+        grid-template-rows: 225px;
+        grid-auto-rows: 225px;
+      }
     }
   }
 }
@@ -32,6 +54,46 @@
   .album-detail {
     &__title {
       font-size: 36px;
+    }
+    &__list {
+      &-wrapper {
+        gap: 20px;
+        grid-template-columns: repeat(3, minmax(315px, 1fr));
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1130px) {
+  .album-detail {
+    &__list {
+      &-wrapper {
+        grid-template-columns: repeat(3, minmax(350px, 1fr));
+        grid-template-rows: 260px;
+        grid-auto-rows: 260px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1445px) {
+  .album-detail {
+    &__list {
+      &-wrapper {
+        grid-template-columns: repeat(3, minmax(455px, 1fr));
+        grid-template-rows: 293px;
+        grid-auto-rows: 293px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .album-detail {
+    &__list {
+      &-wrapper {
+        grid-template-columns: repeat(4, minmax(455px, 1fr));
+      }
     }
   }
 }

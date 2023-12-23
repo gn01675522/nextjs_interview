@@ -21,7 +21,10 @@
     }
   }
   &__list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 290px;
+    grid-template-rows: 186px;
+    grid-auto-flow: column;
     width: 100%;
     height: 100%;
     gap: 20px;
@@ -38,7 +41,7 @@
   }
 }
 
-@media screen and (min-width: 630px) {
+@media screen and (min-width: 550px) {
   .album-review {
     gap: 20px;
     &__title {
@@ -55,9 +58,13 @@
       }
     }
     &__list {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 225px;
       // 以下針對不同的螢幕尺寸來做一些變化
-      // 630 以上為單行顯示兩張，1445 以上則為顯示 3 張
-      // 1920 以上為顯示四張。
+      // 550 以上為單行顯示兩張，1024 以上則為顯示 3 張
+      // 1445 以上為顯示四張。
+      // 到了 1920 尺寸時，會符合設計稿 455 x 293 的圖片尺寸
+      // 並隨著寬度增加而自適應
       // 每個 RWD 斷點都必須針對之前的 nth-child 設定做 unset
       li:not(:first-child) {
         display: unset;
@@ -69,9 +76,11 @@
   }
 }
 
-@media screen and (min-width: 1445px) {
+@media screen and (min-width: 1024px) {
   .album-review {
     &__list {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 260px;
       li:nth-child(n + 3) {
         display: unset;
       }
@@ -82,12 +91,22 @@
   }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1445px) {
   .album-review {
     &__list {
+      grid-template-columns: repeat(4, minmax(330px, 1fr));
+      grid-template-rows: 293px;
       li:nth-child(n + 4) {
         display: unset;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .album-review {
+    &__list {
+      grid-template-columns: repeat(4, minmax(455px, 1fr));
     }
   }
 }

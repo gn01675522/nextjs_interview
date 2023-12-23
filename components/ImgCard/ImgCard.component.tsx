@@ -26,9 +26,9 @@ const ImgCard = ({ photoData }: PropsType) => {
         className="img-card__img"
         src={url}
         alt={title}
-        sizes="290px,(min-width: 768px) 350px, (min-width: 1024px) 455px"
+        width={600}
+        height={600}
         onClick={onOpenModal}
-        fill
       />
     </div>
   );
