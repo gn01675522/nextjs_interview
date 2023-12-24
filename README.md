@@ -1,4 +1,10 @@
-# 部署步驟
+# 使用技術
+- Next.js
+- React.js
+- Typescript
+- SCSS
+
+# 部署
 ## 部署平台
 - 使用平台：Vercel
 - 使用端口：Vercel 預設 (443-https)
@@ -11,7 +17,7 @@
 ![步驟二](./images/img1.png)
 
 3. 後續會出現一個新視窗，該視窗內容如下，此時請選擇紅色框框處的 Only select repositories 選項，接著點擊黃色框框 Select repositories 按鈕，
-之後 Vercel 會將您的 Github 帳號內所有專案都列在下方的綠色框框處，此時請選則您要部署的專案。
+之後 Vercel 會將您的 Github 帳號內所有專案都列在下方的綠色框框處，此時請選擇您要部署的專案。
 ![步驟三](./images/img2.png)
 
 4. 接著點擊紅色框框處的 Install。
@@ -32,3 +38,6 @@
 9. 到了 Dashboard 畫面，紅色框框內會顯示目前專案狀況，包括網域名稱、創建時間、存活狀況、和所在的 git branch 及最後的 commit 和其代表的 hash 值等等，
 此時我們可以點擊黃色框框內的 domain 網址，即可直接造訪我們剛剛部署完畢的網站。
 ![步驟九](./images/img8.png)
+
+# 部署網站
+[NextJS InterView Website](https://nextjs-interview-sandy.vercel.app/login)
